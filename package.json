@@ -27,5 +27,8 @@
     "sequelize-cli": "^5.5.0",
     "server.js": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "10.15.0"
+  }
 }
