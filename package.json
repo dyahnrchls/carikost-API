@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -r esm server.js"
+    "start": "node server.js"
   },
   "author": "dyahnrchls <dyahnrchls@gmail.com>",
   "license": "ISC",
