@@ -28,7 +28,7 @@ exports.store = (req, res) => {
     Object.assign(data, {created_by: req.user.id})
 
     Dorm.create(data)
-        .then(dorm => res.status(200).send(dorm))
+        .then(dorm => res.status(201).send(dorm))
         .catch(err => res.status(400).send(err))
 }
 
