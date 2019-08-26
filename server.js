@@ -16,6 +16,8 @@ const dormsController = require('./controllers/dormsController')
 // middleware
 const { authenticated } = require('./middleware/middleware')
 
+app.get('/', (req, res) => res.send('get list of user https://mamikostclone-api.herokuapp.com/api/v1/users && get list of dorm https://mamikostclone-api.herokuapp.com/api/v1/dorms'))
+
 app.group('/api/v1', (router) => {
 
     // API login&register
