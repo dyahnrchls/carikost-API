@@ -5,20 +5,28 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 exports.register = (req, res) => {
+    const { email, username } = req.body
     const data = req.body
 
-    User.create(data)
+    User.findOne({ where: {[Op.or] : [{email}, {username}]}})
         .then(user => {
-            const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn: '6 hours' })
-            let { id, username, email } = user
-            res.status(200).send({
-                id,
-                username,
-                email,
-                token
-            })
+            if(user){
+                return res.status(409).send({message: 'email/username exist'})
+            }else{
+                return User.create(data)
+                    .then(user => {
+                        const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn: '6 hours' })
+                        let { id, username, email } = user
+                        res.send({
+                            id,
+                            username,
+                            email,
+                            token
+                        })
+                    })
+            }
+        })
         .catch(err => res.status(400).send(err))
-    })
 }
 
 
