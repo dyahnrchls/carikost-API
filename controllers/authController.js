@@ -15,7 +15,7 @@ exports.register = (req, res) => {
             }else{
                 return User.create(data)
                     .then(user => {
-                        const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn: '5 seconds' })
+                        const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn: 5 })
                         let { id, username, email } = user
                         res.send({
                             id,
