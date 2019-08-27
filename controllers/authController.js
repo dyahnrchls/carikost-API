@@ -36,7 +36,7 @@ exports.login = (req, res) => {
     User.findOne({ where: {email, password}})
         .then(user => {
             if(user) {
-                const token = jwt.sign({ id: user.id }, 'my-secret-key', {expiresIn: '6 hours'})
+                const token = jwt.sign({ id: user.id }, 'my-secret-key', {expiresIn: 5})
                 let {id, username, email} = user
                 res.send({
                     message: 'You are logged in!',
