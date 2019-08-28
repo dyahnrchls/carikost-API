@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       latitude: {
-        type: Sequelize.STRING
+        type: Sequelize.DOUBLE
       },
       longitude: {
-        type: Sequelize.STRING
+        type: Sequelize.DOUBLE
       },
       photo: {
         type: Sequelize.STRING
