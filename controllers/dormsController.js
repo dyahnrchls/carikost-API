@@ -1,6 +1,6 @@
 const models = require('../models')
 const Dorm = models.dorm
-
+const jwt = require('jsonwebtoken')
 
 exports.index = (req, res) => {
     Dorm.findAll()
@@ -23,8 +23,12 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
+    let token = req.headers['authorization']
+    token = token.split(' ')[1]
+    const user = jwt.verify(token, 'my-secret-key')
+
     const data = req.body
-    Object.assign(data, {created_by: req.user.id})
+    Object.assign(data, { created_by: user.id })
 
     Dorm.create(data)
         .then(dorm => res.status(201).send(dorm))
