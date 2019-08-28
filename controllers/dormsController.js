@@ -27,8 +27,18 @@ exports.store = (req, res) => {
     token = token.split(' ')[1]
     const user = jwt.verify(token, 'my-secret-key')
 
-    const data = req.body
-    Object.assign(data, { created_by: user.id })
+    const data = {
+        name: req.body.name,
+        address: req.body.address,
+        city: req.body.city,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        photo: req.body.photo,
+        type: req.body.type,
+        price: req.body.price,
+        owner_phone: req.body.owner_phone,
+        created_by: user.id
+    }
 
     Dorm.create(data)
         .then(dorm => res.status(201).send(dorm))
