@@ -17,7 +17,7 @@ exports.register = (req, res) => {
     const result = Joi.validate(req.body, schema)
 
     if (result.error) {
-        return res.send('error username/email/password')
+        return res.send({message:'error username/email/password'})
     }
 
     User.findOne({ where: { [Op.or]: [{ email }, { username }] } })
