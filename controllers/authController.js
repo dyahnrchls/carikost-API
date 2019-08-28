@@ -15,7 +15,7 @@ exports.register = (req, res) => {
             }else{
                 return User.create(data)
                     .then(user => {
-                        const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn: 5 })
+                        const token = jwt.sign({ id: user.id }, 'my-secret-key', { expiresIn:  14400})
                         let { id, username, email } = user
                         res.send({
                             id,
@@ -36,7 +36,7 @@ exports.login = (req, res) => {
     User.findOne({ where: {email, password}})
         .then(user => {
             if(user) {
-                const token = jwt.sign({ id: user.id }, 'my-secret-key', {expiresIn: 5})
+                const token = jwt.sign({ id: user.id }, 'my-secret-key', {expiresIn: 14400})
                 let {id, username, email} = user
                 res.send({
                     message: 'You are logged in!',
