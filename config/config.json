@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "carikost",
+    "database": "database_kost",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
@@ -17,10 +17,10 @@
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "dialect":"postgres",
-    "protocol":"postgres",
+    "dialect": "postgres",
+    "protocol": "postgres",
     "dialectOptions": {
-      "ssl":true
+      "ssl": true
     }
   }
 }

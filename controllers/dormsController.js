@@ -33,13 +33,13 @@ exports.store = (req, res) => {
         city: req.body.city,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
-        photo: req.body.photo,
+        photo: req.file.filename,
         type: req.body.type,
         price: req.body.price,
         owner_phone: req.body.owner_phone,
         created_by: user.id
     }
-
+    console.log(data)
     Dorm.create(data)
         .then(dorm => res.status(201).send(dorm))
         .catch(err => res.status(400).send(err))
